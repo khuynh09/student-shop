@@ -6,6 +6,7 @@ import { Add, Home, Message, AccessTime, Person } from "@material-ui/icons";
 
 const Styles = styled.div`
     .navdiv {
+        background-color: white;
         border-top: black solid 1px;
         font-family: Montserrat;
         height: 80px;

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
+import Post from "./components/Post";
 
 const MainApp = styled.div``;
 
@@ -11,16 +12,19 @@ function App() {
     return (
         <Router>
             <MainApp>
-                <Header />
+                <div style={{ marginBottom: "80px" }}>
+                    <Header />
 
-                <Switch>
-                    <Route exact path="/" />
-                    <Route exact path="/account/new" />
-                    <Route exact path="/account" />
-                    <Route exact path="/listing/new" />
-                </Switch>
+                    <Switch>
+                        <Route exact path="/" />
+                        <Route exact path="/account/new" />
+                        <Route exact path="/account" />
+                        <Route exact path="/listing" component={Post} />
+                        <Route exact path="/listing/new" />
+                    </Switch>
 
-                <Navigation />
+                    <Navigation />
+                </div>
             </MainApp>
         </Router>
     );
