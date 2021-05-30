@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
+import CreateListing from "./components/CreateListing";
 
 const MainApp = styled.div``;
 
@@ -17,7 +18,8 @@ function App() {
                     <Route exact path="/" />
                     <Route exact path="/account/new" />
                     <Route exact path="/account" />
-                    <Route exact path="/listing/new" />
+                    <Route exact path="/listing/new" 
+                           component={props => <CreateListing {...props}/>}/>
                 </Switch>
 
                 <Navigation />
