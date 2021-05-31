@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 
+import Homepage from "./Homepage";
+
 const MainApp = styled.div``;
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
                 <Header />
 
                 <Switch>
-                    <Route exact path="/" />
+                    <Route exact path="/" component={Homepage}/>
                     <Route exact path="/account/new" />
                     <Route exact path="/account" />
                     <Route exact path="/listing/new" />
