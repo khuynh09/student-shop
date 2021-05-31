@@ -67,9 +67,19 @@ const Styles = styled.div`
         }
     }
 
-    .pricing {
+    .post-info {
         padding: 0 10px;
-        margin-top: 4px;
+    }
+
+    .favorites {
+        display: flex;
+        align-items: center;
+    }
+
+    .updated {
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 10px;
     }
 `;
 const Post = () => {
@@ -92,18 +102,11 @@ const Post = () => {
     return (
         <Styles>
             <div className="post">
-                <div className="header">
-                    <AccountCircle style={{ fontSize: "2.8rem" }} />
-                    <div className="user-info">
-                        <div>student_seller</div>
-                        <div>Irvine, CA, United States</div>
-                    </div>
-                </div>
                 <div className="">
                     <img className="post-image" src={squareImage} alt="" />
                 </div>
                 <div className="actions">
-                    <div>
+                    <div className="favorites">
                         {favorited ? (
                             <Favorite
                                 className="action-item"
@@ -115,26 +118,36 @@ const Post = () => {
                                 onClick={favorite}
                             />
                         )}
-                        {bookmarked ? (
-                            <Bookmark
-                                className="action-item"
-                                onClick={bookmark}
-                            />
-                        ) : (
-                            <BookmarkBorder
-                                className="action-item"
-                                onClick={bookmark}
-                            />
-                        )}
-                        <MailOutline className="action-item" />
+
+                        <b>{likes}</b>
                     </div>
                     <div>
                         <Button className="add-button">Purchase</Button>
                     </div>
                 </div>
-                <div className="likes-info">
-                    <b>ally_anteater</b> and <b>{likes} others</b> favorited
-                    this
+
+                <div className="post-info">
+                    <div>
+                        <span style={{ fontWeight: 600, fontSize: "1.2rem" }}>
+                            America’s Majestic Canyons
+                        </span>
+                    </div>
+                    <b>Price </b> ${price} USD{" "}
+                    <span style={{ color: "grey", fontSize: "0.9rem" }}>
+                        +shipping
+                    </span>
+                </div>
+
+                <div className="post-info">
+                    <b>Condition: </b>
+                    <span>New</span>
+                </div>
+                <div className="header">
+                    <AccountCircle style={{ fontSize: "2.8rem" }} />
+                    <div className="user-info">
+                        <div>student_seller</div>
+                        <div>Irvine, CA, United States</div>
+                    </div>
                 </div>
 
                 <div className="description">
@@ -144,13 +157,12 @@ const Post = () => {
                         but message me if interested!
                     </p>
                 </div>
+            </div>
 
-                <div className="pricing">
-                    <b>Price </b> ${price} USD{" "}
-                    <span style={{ color: "grey", fontSize: "0.9rem" }}>
-                        +shipping
-                    </span>
-                </div>
+            <div className="updated">
+                <span style={{ color: "grey", fontSize: "0.9rem" }}>
+                    Posted a day ago
+                </span>
             </div>
         </Styles>
     );
