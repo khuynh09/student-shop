@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
+import CreateListing from "./components/CreateListing";
 import Post from "./components/Post";
 import Account from "./components/Account";
 import Messages from "./components/Messages";
@@ -25,7 +26,7 @@ function App() {
                         <Route exact path="/account/new" />
                         <Route exact path="/account" component={Account} />
                         <Route exact path="/listing" component={Post} />
-                        <Route exact path="/listing/new" />
+                        <Route exact path="/listing/new" component={CreateListing} />
                         <Route path='/messages' exact component={Messages}/>
                         <Route path='/chat' exact component={Chat}/>
                         <Route path='/new-chat' exaxt component={New}/>
