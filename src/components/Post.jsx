@@ -10,7 +10,7 @@ import {
     Bookmark,
     MailOutline,
 } from "@material-ui/icons";
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import squareImage from "../assets/square.png";
 
 const Styles = styled.div`
@@ -99,7 +99,9 @@ const Post = () => {
     const bookmark = () => {
         setBookmarked(!bookmarked);
     };
+    const history = useHistory();
     return (
+        <Router>
         <Styles>
             <div className="post">
                 <div className="">
@@ -143,9 +145,9 @@ const Post = () => {
                     <span>New</span>
                 </div>
                 <div className="header">
-                    <AccountCircle style={{ fontSize: "2.8rem" }} />
+                    <AccountCircle style={{ fontSize: "2.8rem" }} onClick={() => {history.push("/account"); }}/>
                     <div className="user-info">
-                        <div>student_seller</div>
+                        <div>melissastevens</div>
                         <div>Irvine, CA, United States</div>
                     </div>
                 </div>
@@ -165,6 +167,7 @@ const Post = () => {
                 </span>
             </div>
         </Styles>
+        </Router>
     );
 };
 
