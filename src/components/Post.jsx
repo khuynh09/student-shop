@@ -82,7 +82,18 @@ const Styles = styled.div`
         margin-left: 10px;
     }
 `;
-const Post = () => {
+const Post = ({ post }) => {
+    let postings = [
+        {
+            title: "Custom Stoles",
+            image:
+                "https://preview.redd.it/atqedolddew41.jpg?auto=webp&s=a0f39259db9045f95a51085c5d0b890885add0ca",
+            likes: "100",
+            condition: "New",
+            description: "Design your custom stole! DM for more details",
+            price: "DM for Pricing",
+        },
+    ];
     let price = 15;
     const [favorited, setFavorited] = useState(false);
     const [bookmarked, setBookmarked] = useState(false);
@@ -102,71 +113,78 @@ const Post = () => {
     const history = useHistory();
     return (
         <Router>
-        <Styles>
-            <div className="post">
-                <div className="">
-                    <img className="post-image" src={squareImage} alt="" />
-                </div>
-                <div className="actions">
-                    <div className="favorites">
-                        {favorited ? (
-                            <Favorite
-                                className="action-item"
-                                onClick={favorite}
-                            />
-                        ) : (
-                            <FavoriteBorder
-                                className="action-item"
-                                onClick={favorite}
-                            />
-                        )}
-
-                        <b>{likes}</b>
+            <Styles>
+                <div className="post">
+                    <div className="">
+                        <img className="post-image" src={squareImage} alt="" />
                     </div>
-                    <div>
-                        <Button className="add-button">Purchase</Button>
-                    </div>
-                </div>
+                    <div className="actions">
+                        <div className="favorites">
+                            {favorited ? (
+                                <Favorite
+                                    className="action-item"
+                                    onClick={favorite}
+                                />
+                            ) : (
+                                <FavoriteBorder
+                                    className="action-item"
+                                    onClick={favorite}
+                                />
+                            )}
 
-                <div className="post-info">
-                    <div>
-                        <span style={{ fontWeight: 600, fontSize: "1.2rem" }}>
-                            America’s Majestic Canyons
+                            <b>{likes}</b>
+                        </div>
+                        <div>
+                            <Button className="add-button">Purchase</Button>
+                        </div>
+                    </div>
+
+                    <div className="post-info">
+                        <div>
+                            <span
+                                style={{ fontWeight: 600, fontSize: "1.2rem" }}
+                            >
+                                America’s Majestic Canyons
+                            </span>
+                        </div>
+                        <b>Price </b> ${price} USD{" "}
+                        <span style={{ color: "grey", fontSize: "0.9rem" }}>
+                            +shipping
                         </span>
                     </div>
-                    <b>Price </b> ${price} USD{" "}
-                    <span style={{ color: "grey", fontSize: "0.9rem" }}>
-                        +shipping
-                    </span>
-                </div>
 
-                <div className="post-info">
-                    <b>Condition: </b>
-                    <span>New</span>
-                </div>
-                <div className="header">
-                    <AccountCircle style={{ fontSize: "2.8rem" }} onClick={() => {history.push("/account"); }}/>
-                    <div className="user-info">
-                        <div>melissastevens</div>
-                        <div>Irvine, CA, United States</div>
+                    <div className="post-info">
+                        <b>Condition: </b>
+                        <span>New</span>
+                    </div>
+                    <div className="header">
+                        <AccountCircle
+                            style={{ fontSize: "2.8rem" }}
+                            onClick={() => {
+                                history.push("/account");
+                            }}
+                        />
+                        <div className="user-info">
+                            <div>melissastevens</div>
+                            <div>Irvine, CA, United States</div>
+                        </div>
+                    </div>
+
+                    <div className="description">
+                        <p>
+                            Selling this “America’s Majestic Canyons” textbook
+                            for Canyons 101 this quarter! I decided to drop the
+                            class, but message me if interested!
+                        </p>
                     </div>
                 </div>
 
-                <div className="description">
-                    <p>
-                        Selling this “America’s Majestic Canyons” textbook for
-                        Canyons 101 this quarter! I decided to drop the class,
-                        but message me if interested!
-                    </p>
+                <div className="updated">
+                    <span style={{ color: "grey", fontSize: "0.9rem" }}>
+                        Posted a day ago
+                    </span>
                 </div>
-            </div>
-
-            <div className="updated">
-                <span style={{ color: "grey", fontSize: "0.9rem" }}>
-                    Posted a day ago
-                </span>
-            </div>
-        </Styles>
+            </Styles>
         </Router>
     );
 };

@@ -15,22 +15,25 @@ import New from "./components/New";
 const MainApp = styled.div``;
 
 function App() {
-   
     return (
         <Router>
             <MainApp>
-                <div style={{ marginBottom: "80px", marginTop:"80px" }}>
+                <div style={{ marginBottom: "80px", marginTop: "80px" }}>
                     <Header />
 
                     <Switch>
-                        <Route exact path="/" component={Homepage}/>
+                        <Route exact path="/" component={Homepage} />
                         <Route exact path="/account/new" />
                         <Route exact path="/account" component={Account} />
                         <Route exact path="/listing" component={Post} />
-                        <Route exact path="/listing/new" component={CreateListing} />
-                        <Route path='/messages' exact component={Messages}/>
-                        <Route path='/chat' exact component={Chat}/>
-                        <Route path='/new-chat' exaxt component={New}/>
+                        <Route
+                            exact
+                            path="/listing/new"
+                            component={CreateListing}
+                        />
+                        <Route path="/messages" exact component={Messages} />
+                        <Route path="/chat" exact component={Chat} />
+                        <Route path="/new-chat" exaxt component={New} />
                     </Switch>
 
                     <Navigation />
