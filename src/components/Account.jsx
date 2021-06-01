@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import profileImage from "../assets/profile.jpeg";
 import listingImage from "../assets/square.png";
@@ -138,7 +138,7 @@ const Styles = styled.div`
     left: 0;
     position: absolute;
     text-align: center;
-    top: 1010px;
+    top: 1040px;
     width: 100%;
     -webkit-text-stroke: 2px #301934;
 }
@@ -166,6 +166,17 @@ const Styles = styled.div`
 
 const Account = () => {
     const history = useHistory();
+    const [likes, setLikes] = useState(4839);
+    const [dislikes, setDislikes] = useState(12);
+
+    const liked = () => {
+        setLikes(likes + 1);
+    };
+
+    const disliked = () => {
+        setDislikes(dislikes + 1);
+    };
+
     return (
         <Router>
         <Styles>
@@ -178,10 +189,10 @@ const Account = () => {
                         <h1 className="name">Melissa Stevens</h1>
                         <h3 className="university">3rd Year, Psychology, UC Irvine</h3>
                         <div className="ratings">
-                            <ThumbUpIcon fontSize="default" className="thumb-up"/>
-                            <p className="likes">4839</p>
-                            <ThumbDownIcon fontSize="default" className="thumb-down"/>
-                            <p className="dislikes">12</p>
+                            <ThumbUpIcon fontSize="default" className="thumb-up" onClick={liked}/>
+                            <p className="likes">{likes}</p>
+                            <ThumbDownIcon fontSize="default" className="thumb-down" onClick={disliked}/>
+                            <p className="dislikes">{dislikes}</p>
                         </div>
                     </div>
                 </div>
@@ -192,7 +203,7 @@ const Account = () => {
                 <div className="listings">
                     <h2 className="listings-header">Listings</h2>
                     <hr></hr>
-                    <img className="listing-image" src={listingImage} onClick={() => {history.push("/listing"); }} alt="Melissa's listing"/>
+                    <img className="listing-image" src={listingImage} onClick={() => { history.push("/listing"); }} alt="Melissa's listing"/>
                     <div className="sold">
                         <img className="sold-listing" src={soldListing} alt="Sold listing"/>
                         <h1 className="sold-header">SOLD OUT</h1>
