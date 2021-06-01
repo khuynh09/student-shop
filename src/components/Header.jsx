@@ -21,10 +21,15 @@ const Styles = styled.div`
         );
         font-family: Montserrat;
         height: 80px;
-        padding: 0 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 60px;
+        width: 100%;
+        z-index: 100;
     }
 
     .logo {
