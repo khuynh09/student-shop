@@ -6,6 +6,9 @@ import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import Post from "./components/Post";
 import Account from "./components/Account";
+import Messages from "./components/Messages";
+import Chat from "./components/Chat";
+import New from "./components/New";
 
 const MainApp = styled.div``;
 
@@ -23,6 +26,9 @@ function App() {
                         <Route exact path="/account" component={Account} />
                         <Route exact path="/listing" component={Post} />
                         <Route exact path="/listing/new" />
+                        <Route path='/messages' exact component={Messages}/>
+                        <Route path='/chat' exact component={Chat}/>
+                        <Route path='/new-chat' exaxt component={New}/>
                     </Switch>
 
                     <Navigation />

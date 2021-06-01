@@ -56,7 +56,7 @@ ul {
             font-weight: bold;
             font-size: 16px;
             text-align: justify;
-            padding-left:43%;
+            padding-left:33%;
             }
             
             
@@ -210,9 +210,9 @@ const Chat = () => {
                     <div className="return" onClick={() => {history.push("/messages"); }}>&#60;
                     </div>
                     
-                    <img src="user_profile.png" alt="avatar" onClick={() => {history.push("/profile"); }} />
+                    <img src="melissa.png" alt="avatar" onClick={() => {history.push("/account"); }} />
 
-                    <div className="chat-with">Bob_B</div>
+                    <div className="chat-with">Melissa Stevens</div>
                
                 </div> 
                 
