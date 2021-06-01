@@ -18,6 +18,7 @@ const Styles = styled.div`
         bottom: 0;
         height: 60px;
         width: 100%;
+        background:white;
     }
 
     .logo {
