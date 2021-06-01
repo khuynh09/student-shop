@@ -27,18 +27,26 @@ const Styles = styled.div`
         font-size: 18px;
     }
 
+    #details-bar {
+        background-color: #bf98d1;
+    }
+
+    #details-text {
+        color: #bf98d1;
+    }
+
     .form-container {
         margin: 30px;
         border-radius: 10px;
-        border: 2px solid #C4C4C4; 
-        height: 50vh;
+        background-color: #E5E5E5;
+        height: 55vh;
     }
 
     .next-button {
         width: 85vw;
         margin: 0 auto;
         display: block;
-        margin-top: 40px;
+        margin-top: 30px;
         height: 40px;
         border-radius: 10px;
         border: none;
@@ -48,37 +56,172 @@ const Styles = styled.div`
         font-weight: 600;
         font-family: Montserrat;
     }
+
+    .form-label {
+        color: #5F5F5F;
+        font-size: 16px;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .title-input {
+        border: 2px solid #DADADA;
+        border-radius: 8px;
+        height: 25px;
+        width: 100%;
+    }
+
+    .form-group {
+        margin-left: 20px;
+        margin-right: 30px;
+        padding-top: 20px;
+    }
+
+    .form-item {
+        margin-bottom: 15px;
+    }
+
+    .category-dropdown {
+        border: 2px solid #DADADA;
+        border-radius: 8px;
+        height: 30px;
+        width: 103%;
+        background-color: white;
+    }
+
+    .input-symbol-dollar {
+        position: relative;
+        display: block;
+    }
+
+    .input-symbol-dollar:after {
+        color: #37424a !important;
+        content: "$";
+        font-size: 14px !important;
+        font-weight: 400;
+        position: absolute;
+        display: block;
+        height: 100%;
+        top: 3px;
+        left: 10px;
+        line-height: 25px;
+    }
+
+    .price-input {
+        border: 2px solid #DADADA;
+        border-radius: 8px;
+        width: 94%;
+        height: 25px !important;
+        padding-left: 20px !important;
+        display: inline-block !important;
+    }
+
+    .description-input {
+        border: 2px solid #DADADA;
+        border-radius: 8px;
+        height: 7vh;
+        width: 100%;
+    }
 `;
+
 const CreateListing = ({history, location, match}) => {
+    const [currentStatus, setCurrentStatus] = useState('details');
+    let pageContent = "";
+
+    const handleNext = (e) => {
+        if (currentStatus === 'details') {
+            document.getElementById('photos-bar').style.backgroundColor = '#bf98d1';
+            document.getElementById('photos-text').style.color = '#bf98d1';
+            setCurrentStatus('photos');
+        } else if (currentStatus === 'photos') {
+            document.getElementById('finish-bar').style.backgroundColor = '#bf98d1';
+            document.getElementById('finish-text').style.color = '#bf98d1';
+            setCurrentStatus('finish');
+        }
+    }
+
+    if (currentStatus === 'details') {
+        pageContent = (
+            <div className="form-container">
+                <form className="form-group">
+                    <div className="form-item">
+                        <label className="form-label">Title</label>
+                        <input
+                            className="title-input"
+                            type="text"
+                        />
+                    </div>
+                    <div className="form-item">
+                        <label className="form-label">Category</label>
+                        <select className="category-dropdown">
+                            <option value="default"></option>
+                            <option value="books">Books</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="electronics">Electronics</option>
+                        </select>
+                    </div>
+                    <div className="form-item">
+                        <label className="form-label">Price</label>
+                        <span className="input-symbol-dollar">
+                            <input
+                                className="price-input"
+                                type="number"
+                                min="0.00"
+                                max="10000.00"
+                                step="0.01"
+                            />
+                        </span>
+                    </div>
+                    <div className="form-item">
+                        <label className="form-label">Condition</label>
+                        <select className="category-dropdown">
+                            <option value="default"></option>
+                            <option value="New">New</option>
+                            <option value="Used">Used</option>
+                        </select>
+                    </div>
+                    <div className="form-item">
+                        <label className="form-label">Description</label>
+                        <textarea
+                            className="description-input"
+                        />
+                    </div>
+                </form>
+            </div>
+        );
+    } else if (currentStatus === 'photos') {
+        pageContent = (
+            <div>Photos</div>
+        );
+    } else if (currentStatus === 'finish') {
+        pageContent = (
+            <div>Finish</div>
+        );
+    }
+    
     return (
         <Styles>
         <div className="page-container">
             <div className="status-container">
                 <div className="details">
-                    <div className="bar"></div>
-                    <div className="status-text">Details</div>
+                    <div className="bar" id="details-bar"></div>
+                    <div className="status-text" id="details-text">Details</div>
                 </div>
                 <div className="photos">
-                    <div className="bar"></div>
-                    <div className="status-text">Photos</div>
+                    <div className="bar" id="photos-bar"></div>
+                    <div className="status-text" id="photos-text">Photos</div>
                 </div>
                 <div className="finish">
-                    <div className="bar"></div>
-                    <div className="status-text">Finish</div>
+                    <div className="bar" id="finish-bar"></div>
+                    <div className="status-text" id="finish-text">Finish</div>
                 </div>
             </div>
 
-            <div className="form-container">
-                <form>
-                    <label className="form-label">Title</label>
-                    <input
-                        className="form-input"
-                        type="text"
-                    />
-                </form>
-            </div>
+            {pageContent}
 
-            <button className="next-button">Next</button>
+            <button className="next-button" onClick={handleNext}>Next</button>
         </div>
         </Styles>
     );
