@@ -82,7 +82,7 @@ const Homepage= ({history, location, match}) => {
 
     const classes = useStyles();
     return (
-        <div>
+        <div style={{paddingTop: "20px"}}>
             <div>
                 <Card className={classes.banner}>
                     <CardActionArea>
