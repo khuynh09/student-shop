@@ -1,0 +1,32 @@
+[
+    {
+      "title": "Bob_B",
+      "image": "/user_profile.png",
+      "time": "5m",
+      "text": "You: OMW to pick up the grill!"
+    },
+    {
+        "title": "Cherri_B",
+        "image": "female_woman2.png",
+        "time": "55m",
+        "text": "20% discount for CS majors"
+      },
+      {
+        "title": "Laura_Gomezz",
+        "image": "female_woman.png",
+        "time": "1h",
+        "text": "I can throw in a free notebok!"
+      },
+      {
+        "title": "AnaQ",
+        "image": "/woman-profile-icon-68.png",
+        "time": "5h",
+        "text": "You: Do you have other books for sale?"
+      },
+      {
+        "title": "Keniaa",
+        "image": "female_woman2.png",
+        "time": "1d",
+        "text": "I can give you $5 off"
+      }
+]
