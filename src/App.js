@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import CreateListing from "./components/CreateListing";
+import Post from "./components/Post";
+import Account from "./components/Account";
 
 const MainApp = styled.div``;
 
@@ -12,17 +14,19 @@ function App() {
     return (
         <Router>
             <MainApp>
-                <Header />
+                <div style={{ marginBottom: "80px" }}>
+                    <Header />
 
-                <Switch>
-                    <Route exact path="/" />
-                    <Route exact path="/account/new" />
-                    <Route exact path="/account" />
-                    <Route exact path="/listing/new" 
-                           component={props => <CreateListing {...props}/>}/>
-                </Switch>
+                    <Switch>
+                        <Route exact path="/" />
+                        <Route exact path="/account/new" />
+                        <Route exact path="/account" component={Account} />
+                        <Route exact path="/listing" component={Post} />
+                        <Route exact path="/listing/new" component={CreateListing}/>
+                    </Switch>
 
-                <Navigation />
+                    <Navigation />
+                </div>
             </MainApp>
         </Router>
     );
