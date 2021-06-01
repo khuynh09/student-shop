@@ -161,11 +161,29 @@ const Styles = styled.div`
         font-size: 16px;
         font-weight: 600;
     }
+
+    .finish-container {
+        margin: 0px 30px;
+        margin-top: 30px;
+    }
+
+    .post-image {
+        width: 250px;
+        margin-bottom: 10px;
+    }
 `;
 
 const CreateListing = ({history, location, match}) => {
     const [currentStatus, setCurrentStatus] = useState('details');
+    const [title, setTitle] = useState();
+    const [category, setCategory] = useState();
+    const [price, setPrice] = useState();
+    const [condition, setCondition] = useState();
+    const [description, setDescription] = useState();
+    const [image, setImage] = useState();
+
     let pageContent = "";
+    let bottomButton = "";
 
     const handleNext = (e) => {
         if (currentStatus === 'details') {
@@ -182,7 +200,12 @@ const CreateListing = ({history, location, match}) => {
     const loadFile = (e) => {
         let image = document.getElementById('output');
         image.src = URL.createObjectURL(e.target.files[0]);
+        setImage(image.src);
         image.style.display = 'block';
+    }
+
+    const handlePost = (e) => {
+        history.push("/");
     }
 
     if (currentStatus === 'details') {
@@ -194,11 +217,17 @@ const CreateListing = ({history, location, match}) => {
                         <input
                             className="title-input"
                             type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
                         />
                     </div>
                     <div className="form-item">
                         <label className="form-label">Category</label>
-                        <select className="category-dropdown">
+                        <select 
+                            className="category-dropdown"
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                        >
                             <option value="default"></option>
                             <option value="books">Books</option>
                             <option value="furniture">Furniture</option>
@@ -215,12 +244,18 @@ const CreateListing = ({history, location, match}) => {
                                 min="0.00"
                                 max="10000.00"
                                 step="0.01"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
                             />
                         </span>
                     </div>
                     <div className="form-item">
                         <label className="form-label">Condition</label>
-                        <select className="category-dropdown">
+                        <select 
+                            className="category-dropdown"
+                            value={condition}
+                            onChange={(e) => setCondition(e.target.value)}
+                        >
                             <option value="default"></option>
                             <option value="New">New</option>
                             <option value="Used">Used</option>
@@ -230,10 +265,16 @@ const CreateListing = ({history, location, match}) => {
                         <label className="form-label">Description</label>
                         <textarea
                             className="description-input"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
                 </form>
             </div>
+        );
+
+        bottomButton = (
+            <button className="next-button" onClick={handleNext}>Next</button>
         );
     } else if (currentStatus === 'photos') {
         pageContent = (
@@ -255,9 +296,38 @@ const CreateListing = ({history, location, match}) => {
                 </div>
             </div>
         );
+
+        bottomButton = (
+            <button className="next-button" onClick={handleNext}>Next</button>
+        );
     } else if (currentStatus === 'finish') {
         pageContent = (
-            <div>Finish</div>
+            <div className="finish-container">
+                <div className="">
+                    <img className="post-image" src={image} alt="" />
+                </div>
+                <div className="post-info">
+                    <div>
+                        <span style={{ fontWeight: 600, fontSize: "1.2rem" }}>
+                            {title}
+                        </span>
+                    </div>
+                    <b>Price </b> ${price} USD{" "}
+                </div>
+
+                <div className="post-info">
+                    <b>Condition: </b>
+                    <span>{condition}</span>
+                </div>
+
+                <div className="description">
+                    <p>{description}</p>
+                </div>
+            </div>
+        );
+
+        bottomButton = (
+            <button className="next-button" onClick={handlePost}>Post Item</button>
         );
     }
     
@@ -281,7 +351,7 @@ const CreateListing = ({history, location, match}) => {
 
             {pageContent}
 
-            <button className="next-button" onClick={handleNext}>Next</button>
+            {bottomButton}
         </div>
         </Styles>
     );
