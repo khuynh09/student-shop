@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import { Add } from "@material-ui/icons";
 
 const Styles = styled.div`
     .page-container {
@@ -123,6 +125,42 @@ const Styles = styled.div`
         height: 7vh;
         width: 100%;
     }
+
+    .upload-photo {
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    .photo-input {
+        display: none;
+    }
+
+    .photo-label {
+        cursor: pointer;
+        background-color: #bf98d1;
+        color: white;
+        display: block;
+        font-weight: 600;
+        font-size: 18px;
+        width: 50px;
+        height: 40px;
+        border-radius: 8px;
+        padding-top: 10px;
+        margin: 0 auto;
+    }
+
+    .output-photo {
+        display: none;
+        padding-top: 30px;
+        margin: 0 auto;
+        max-height: 250px;
+    }
+
+    .photo-title {
+        color: #5F5F5F;
+        font-size: 16px;
+        font-weight: 600;
+    }
 `;
 
 const CreateListing = ({history, location, match}) => {
@@ -139,6 +177,12 @@ const CreateListing = ({history, location, match}) => {
             document.getElementById('finish-text').style.color = '#bf98d1';
             setCurrentStatus('finish');
         }
+    }
+
+    const loadFile = (e) => {
+        let image = document.getElementById('output');
+        image.src = URL.createObjectURL(e.target.files[0]);
+        image.style.display = 'block';
     }
 
     if (currentStatus === 'details') {
@@ -193,7 +237,23 @@ const CreateListing = ({history, location, match}) => {
         );
     } else if (currentStatus === 'photos') {
         pageContent = (
-            <div>Photos</div>
+            <div className="form-container">
+                <div className="upload-photo">
+                    <h3 className="photo-title">Upload Photo</h3>
+                    <input 
+                        className="photo-input"
+                        type="file"  
+                        accept="image/*" 
+                        name="image" 
+                        id="file"  
+                        onChange={loadFile} 
+                    />
+                    <label htmlFor="file" className="photo-label">
+                        <Add style={{ fontSize: "2rem" }} />
+                    </label>
+                    <img className="output-photo" id="output" alt="uploaded" width="250" />
+                </div>
+            </div>
         );
     } else if (currentStatus === 'finish') {
         pageContent = (
