@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import profileImage from "../assets/profile.jpeg";
 import listingImage from "../assets/square.png";
