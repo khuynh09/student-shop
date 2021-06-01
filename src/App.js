@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import CreateListing from "./components/CreateListing";
 import Post from "./components/Post";
+import Homepage from "./Homepage";
 import Account from "./components/Account";
 import Messages from "./components/Messages";
 import Chat from "./components/Chat";
@@ -18,11 +19,11 @@ function App() {
     return (
         <Router>
             <MainApp>
-                <div style={{ marginBottom: "80px" }}>
+                <div style={{ marginBottom: "80px", marginTop:"80px" }}>
                     <Header />
 
                     <Switch>
-                        <Route exact path="/" />
+                        <Route exact path="/" component={Homepage}/>
                         <Route exact path="/account/new" />
                         <Route exact path="/account" component={Account} />
                         <Route exact path="/listing" component={Post} />
