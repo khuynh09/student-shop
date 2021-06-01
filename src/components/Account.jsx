@@ -5,6 +5,8 @@ import listingImage from "../assets/square.png";
 import soldListing from "../assets/sold.jpeg"
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import { useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const Styles = styled.div`
 .profile {
@@ -26,28 +28,30 @@ const Styles = styled.div`
 
 .user-fullname {
    float: left;
-   width: 60%;
+   width: 50%;
 }
 
 .name {
    font-family: Montserrat;
    font-weight: 600;
-   font-size: 30px;
-   padding-top: 5%;
+   font-size: 20px;
+   padding-top: 17%;
 }
 
 .university {
    font-family: Montserrat;
    font-weight: normal;
-   font-size: 15px;
+   font-size: 12px;
 }
 
 .profile-image {
-    border-radius: 35px;
+    border-radius: 15px;
     display: block;
     width: 150px;
-    padding: 5%;
-    float:left;
+    margin-top: 5%;
+    margin-left: 3%;
+    margin-right: 5%;
+    float: left;
 }
 
 .ratings {
@@ -73,7 +77,7 @@ const Styles = styled.div`
 
 .likes, .dislikes {
     font-family: Montserrat;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .clearer {
@@ -87,6 +91,7 @@ const Styles = styled.div`
     width: 90%;
     padding-left: 5%;
     padding-right: 5%;
+    padding-top: 5%;
 }
 
 .bio-text {
@@ -133,7 +138,7 @@ const Styles = styled.div`
     left: 0;
     position: absolute;
     text-align: center;
-    top: 1180px;
+    top: 1010px;
     width: 100%;
     -webkit-text-stroke: 2px #301934;
 }
@@ -160,7 +165,9 @@ const Styles = styled.div`
 `;
 
 const Account = () => {
+    const history = useHistory();
     return (
+        <Router>
         <Styles>
             <div className="profile">
                 <div className="profile-window">
@@ -171,9 +178,9 @@ const Account = () => {
                         <h1 className="name">Melissa Stevens</h1>
                         <h3 className="university">3rd Year, Psychology, UC Irvine</h3>
                         <div className="ratings">
-                            <ThumbUpIcon fontSize="large" className="thumb-up"/>
+                            <ThumbUpIcon fontSize="default" className="thumb-up"/>
                             <p className="likes">4839</p>
-                            <ThumbDownIcon fontSize="large" className="thumb-down"/>
+                            <ThumbDownIcon fontSize="default" className="thumb-down"/>
                             <p className="dislikes">12</p>
                         </div>
                     </div>
@@ -185,9 +192,7 @@ const Account = () => {
                 <div className="listings">
                     <h2 className="listings-header">Listings</h2>
                     <hr></hr>
-                    <a href="./Post">
-                        <img className="listing-image" src={listingImage} alt="Melissa's listing"/>
-                    </a>
+                    <img className="listing-image" src={listingImage} onClick={() => {history.push("/listing"); }} alt="Melissa's listing"/>
                     <div className="sold">
                         <img className="sold-listing" src={soldListing} alt="Sold listing"/>
                         <h1 className="sold-header">SOLD OUT</h1>
@@ -195,6 +200,7 @@ const Account = () => {
                 </div>
             </div>
         </Styles>
+        </Router>
     );
 };
 
