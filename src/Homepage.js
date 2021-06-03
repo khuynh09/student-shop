@@ -9,6 +9,7 @@ import {
     TextField,
     FormControl,
     Button,
+    isWidthUp,
 } from "@material-ui/core";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
@@ -84,6 +85,8 @@ const Homepage = ({ location, match }) => {
     let history = useHistory();
     const [index, setIndex] = useState(0);
     const [isGrad, setIsGrad] = useState(false);
+    const [isMoveOut, setIsMoveOut] = useState(false);
+    const [isRoom, setIsRoom] = useState(false);
     const [searchResults, setSearchResults] = useState("");
 
     const handleSelect = (selectedIndex, e) => {
@@ -158,16 +161,28 @@ const Homepage = ({ location, match }) => {
                 </FormControl>
                 <div className={classes.filterGroup}>
                     <Button
+                        onClick={() => {
+                            setIsRoom(!isRoom);
+                        }}
                         className={classes.filterButton}
                         variant="outlined"
-                        style={{ color: "#f28482" }}
+                        style={{
+                            color: isRoom ? "white" : "#f28482",
+                            background: isRoom ? "#f28482" : "none",
+                        }}
                     >
                         Room for Rent
                     </Button>
                     <Button
+                        onClick={() => {
+                            setIsMoveOut(!isMoveOut);
+                        }}
                         className={classes.filterButton}
                         variant="outlined"
-                        style={{ color: "#84a59d" }}
+                        style={{
+                            color: isMoveOut ? "white" : "#84a59d",
+                            background: isMoveOut ? "#84a59d" : "none",
+                        }}
                     >
                         Move out Sale
                     </Button>
@@ -177,7 +192,10 @@ const Homepage = ({ location, match }) => {
                         }}
                         className={classes.filterButton}
                         variant="outlined"
-                        style={{ color: "#f6bd60" }}
+                        style={{
+                            color: isGrad ? "white" : "#f6bd60",
+                            background: isGrad ? "#f6bd60" : "none",
+                        }}
                     >
                         Graduation
                     </Button>

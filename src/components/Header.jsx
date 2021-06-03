@@ -74,12 +74,8 @@ const Styles = styled.div`
 const Header = () => {
     const history = useHistory();
     const location = useLocation();
-    const back = (path) => {
-        if (path == "/chat") {
-            history.goBack();
-        } else {
-            history.push("/");
-        }
+    const back = () => {
+        history.goBack();
     };
     return (
         <Styles>
@@ -88,12 +84,7 @@ const Header = () => {
                     location.pathname.includes("/listing")) && (
                     <div className="back-button">
                         <div>
-                            <ArrowBackIos
-                                onClick={() => {
-                                    back(location.pathname);
-                                }}
-                                fontSize="large"
-                            />
+                            <ArrowBackIos onClick={back} fontSize="large" />
                         </div>
                     </div>
                 )}
