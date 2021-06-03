@@ -74,10 +74,9 @@ const Styles = styled.div`
 const Header = () => {
     const history = useHistory();
     const location = useLocation();
-    console.log(location);
     const back = (path) => {
         if (path == "/chat") {
-            history.push("/messages");
+            history.goBack();
         } else {
             history.push("/");
         }
