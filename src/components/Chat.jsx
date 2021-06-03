@@ -29,7 +29,7 @@ const Styles = styled.div`
             padding: 10px;
             border-bottom: 2px solid white;
             position: sticky;
-            // background: #bf98d1;
+            background: #bf98d1;
 
             .return {
                 font-weight: 10px;

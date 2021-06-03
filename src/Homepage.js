@@ -18,6 +18,7 @@ import banner from "./assets/BC_Peter_Background_Mirror.png";
 import Carousel from "react-bootstrap/Carousel";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import { useHistory } from "react-router-dom";
 
 // import CardBody from "components/Card/CardBody.js";
 
@@ -78,9 +79,11 @@ const Alert = (props) => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 };
 
-const Homepage = ({ history, location, match }) => {
+const Homepage = ({ location, match }) => {
+    let history = useHistory();
     const [index, setIndex] = useState(0);
     const [isGrad, setIsGrad] = useState(false);
+    const [searchResults, setSearchResults] = useState("");
 
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
@@ -102,7 +105,7 @@ const Homepage = ({ history, location, match }) => {
 
     const classes = useStyles();
     return (
-        <div>
+        <div style={{ paddingTop: "20px" }}>
             <Snackbar
                 anchorOrigin={{ vertical: "top", horizontal: "center" }}
                 open={open}
@@ -110,7 +113,7 @@ const Homepage = ({ history, location, match }) => {
                 onClose={handleClose}
             >
                 <Alert onClose={handleClose} severity="info">
-                    New Posting by Top Seller <b>melissastevens</b>
+                    New Posting by Top Seller <b>peteranteater</b>
                 </Alert>
             </Snackbar>
             <div>
@@ -137,7 +140,12 @@ const Homepage = ({ history, location, match }) => {
                     <TextField
                         autoComplete="off"
                         onChange={(event) => {
-                            if (event.target.value == "grad") setIsGrad(true);
+                            setSearchResults(event.target.value);
+                            if (
+                                event.target.value == "grad" ||
+                                event.target.value == "graduation"
+                            )
+                                setIsGrad(true);
                             else {
                                 setIsGrad(false);
                             }
@@ -174,12 +182,20 @@ const Homepage = ({ history, location, match }) => {
                     </Button>
                 </div>
             </div>
+            {searchResults && (
+                <h3 className={classes.header}>
+                    Showing results for "{searchResults}"
+                </h3>
+            )}
             {!isGrad ? (
                 <div className={classes.initial}>
                     <h2 className={classes.header}>Recommended Items</h2>
 
                     <div className={classes.scrollmenu}>
                         <Card
+                            onClick={() => {
+                                history.push("listing/0");
+                            }}
                             style={{ width: 300 }}
                             className={(classes.banner, classes.item)}
                         >
@@ -207,6 +223,9 @@ const Homepage = ({ history, location, match }) => {
                             </CardActionArea>
                         </Card>
                         <Card
+                            onClick={() => {
+                                history.push("listing/1");
+                            }}
                             style={{ width: 300 }}
                             className={(classes.banner, classes.item)}
                         >
@@ -234,6 +253,9 @@ const Homepage = ({ history, location, match }) => {
                             </CardActionArea>
                         </Card>
                         <Card
+                            onClick={() => {
+                                history.push("listing/2");
+                            }}
                             style={{ width: 300 }}
                             className={(classes.banner, classes.item)}
                         >
@@ -266,6 +288,9 @@ const Homepage = ({ history, location, match }) => {
                         <h2 className={classes.header}>Class Materials</h2>
                         <div className={classes.scrollmenu}>
                             <Card
+                                onClick={() => {
+                                    history.push("listing/3");
+                                }}
                                 style={{ width: 300 }}
                                 className={(classes.banner, classes.item)}
                             >
@@ -293,6 +318,9 @@ const Homepage = ({ history, location, match }) => {
                                 </CardActionArea>
                             </Card>
                             <Card
+                                onClick={() => {
+                                    history.push("listing/1");
+                                }}
                                 style={{ width: 300 }}
                                 className={(classes.banner, classes.item)}
                             >
@@ -320,6 +348,9 @@ const Homepage = ({ history, location, match }) => {
                                 </CardActionArea>
                             </Card>
                             <Card
+                                onClick={() => {
+                                    history.push("listing/5");
+                                }}
                                 style={{ width: 300 }}
                                 className={(classes.banner, classes.item)}
                             >
@@ -334,7 +365,7 @@ const Homepage = ({ history, location, match }) => {
                                             variant="h5"
                                             component="h3"
                                         >
-                                            CS122A Intro to Databses
+                                            CS122A Intro to Databases
                                         </Typography>
                                         <Typography
                                             gutterBottom
@@ -351,11 +382,14 @@ const Homepage = ({ history, location, match }) => {
                 </div>
             ) : (
                 <div>
-                    <h3 className={classes.header}>
-                        Showing results for "grad"
-                    </h3>
                     <div className={classes.grad}>
-                        <Card style={{ width: 300 }} className={classes.banner}>
+                        <Card
+                            onClick={() => {
+                                history.push("listing/0");
+                            }}
+                            style={{ width: 300 }}
+                            className={classes.banner}
+                        >
                             <CardActionArea>
                                 <CardMedia
                                     className={classes.media}
@@ -379,7 +413,13 @@ const Homepage = ({ history, location, match }) => {
                                 </CardContent>
                             </CardActionArea>
                         </Card>
-                        <Card style={{ width: 300 }} className={classes.banner}>
+                        <Card
+                            onClick={() => {
+                                history.push("listing/6");
+                            }}
+                            style={{ width: 300 }}
+                            className={classes.banner}
+                        >
                             <CardActionArea>
                                 <CardMedia
                                     className={classes.media}
@@ -405,7 +445,13 @@ const Homepage = ({ history, location, match }) => {
                         </Card>
                     </div>
                     <div className={classes.grad}>
-                        <Card style={{ width: 300 }} className={classes.banner}>
+                        <Card
+                            onClick={() => {
+                                history.push("listing/7");
+                            }}
+                            style={{ width: 300 }}
+                            className={classes.banner}
+                        >
                             <CardActionArea>
                                 <CardMedia
                                     className={classes.media}
@@ -429,7 +475,13 @@ const Homepage = ({ history, location, match }) => {
                                 </CardContent>
                             </CardActionArea>
                         </Card>
-                        <Card style={{ width: 300 }} className={classes.banner}>
+                        <Card
+                            onClick={() => {
+                                history.push("listing/8");
+                            }}
+                            style={{ width: 300 }}
+                            className={classes.banner}
+                        >
                             <CardActionArea>
                                 <CardMedia
                                     className={classes.media}

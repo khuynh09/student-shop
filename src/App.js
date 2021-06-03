@@ -25,7 +25,7 @@ function App() {
                         <Route exact path="/" component={Homepage} />
                         <Route exact path="/account/new" />
                         <Route exact path="/account" component={Account} />
-                        <Route exact path="/listing" component={Post} />
+                        <Route exact path="/listing/:postId" component={Post} />
                         <Route
                             exact
                             path="/listing/new"
