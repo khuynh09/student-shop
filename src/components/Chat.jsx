@@ -252,12 +252,6 @@ const Chat = () => {
                         ></textarea>
                     </div>
                 </div>
-                
-            
-                <div className="chat-message clearfix">
-                    <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
-                    
-                </div>
             
             </div>
         </Styles>
