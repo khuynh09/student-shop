@@ -82,7 +82,7 @@ const Navigation = () => {
                 <div
                     className="nav-item"
                     onClick={() => {
-                        history.push("/account");
+                        history.push("/account/6");
                     }}
                 >
                     <div>

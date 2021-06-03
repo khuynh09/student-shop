@@ -252,6 +252,7 @@ const Chat = () => {
                         ></textarea>
                     </div>
                 </div>
+            
             </div>
         </Styles>
     );

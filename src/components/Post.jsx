@@ -97,6 +97,7 @@ const Post = ({ post }) => {
             description: "Design your custom stole! DM for more details",
             price: "DM for Pricing",
             user: "lynettenguyen",
+            userId: 1,
         },
         {
             title: "America’s Majestic Canyons",
@@ -108,6 +109,7 @@ const Post = ({ post }) => {
                 "Selling this “America’s Majestic Canyons” textbook for Canyons 101 this quarter! I decided to drop the class, but message me if interested!",
             price: "$15 USD",
             user: "melissastevens",
+            userId: 0,
         },
         {
             title: "Give Liberty",
@@ -119,6 +121,7 @@ const Post = ({ post }) => {
                 "Selling this “Give Liberty” textbook for this quarter! I decided to drop the class, but message me if interested!",
             price: "$10 USD",
             user: "melissastevens",
+            userId: 0,
         },
         {
             title: "CS147 IOT Kit",
@@ -130,6 +133,7 @@ const Post = ({ post }) => {
                 "Selling this kit for cheap! Used but almost mint condition!",
             price: "$20 USD",
             user: "amandaslin",
+            userId: 4,
         },
         {
             title: "CS147 IOT Kit",
@@ -141,6 +145,7 @@ const Post = ({ post }) => {
                 "Selling this kit for cheap! Used but almost mint condition!",
             price: "$20 USD",
             user: "amandaslin",
+            userId: 4,
         },
         {
             title: "CS122A Intro to Databases",
@@ -152,6 +157,7 @@ const Post = ({ post }) => {
             description: "Price negotiable",
             price: "$8 USD",
             user: "kevinhuynh",
+            userId: 2,
         },
         {
             title: "Graduation Shoot",
@@ -163,6 +169,7 @@ const Post = ({ post }) => {
                 "Now accepting bookings. Shoot me a message to see my portfolio",
             price: "$120/hr",
             user: "dayam",
+            userId: 3
         },
         {
             title: "Custom Cap Art",
@@ -173,6 +180,7 @@ const Post = ({ post }) => {
             description: "I'll make your caps cute",
             price: "$30",
             user: "maiespiritu",
+            userId: 5,
         },
         {
             title: "Homemade Graduation Leis",
@@ -183,6 +191,7 @@ const Post = ({ post }) => {
             description: "Selling leis!!!",
             price: "$10",
             user: "amandaslin",
+            userId: 4,
         },
     ];
     let price = 15;
@@ -273,7 +282,7 @@ const Post = ({ post }) => {
                         <AccountCircle
                             style={{ fontSize: "2.8rem" }}
                             onClick={() => {
-                                history.push("/account");
+                                history.push(`/account/${postings[postId].userId}`);
                             }}
                         />
                         <div className="user-info">
