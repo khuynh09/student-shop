@@ -224,7 +224,7 @@ const Post = ({ post }) => {
                         <img
                             className="post-image"
                             style={{
-                                width: "auto",
+                                width: "375px",
                                 height: "100%",
                                 objectFit: "contain",
                             }}
