@@ -28,7 +28,7 @@ import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
     banner: {
-        maxWidth: 345,
+        // maxWidth: 345,
         marginLeft: 15,
         marginRight: 15,
         marginTop: 10,
@@ -43,6 +43,7 @@ const useStyles = makeStyles({
     },
 
     filterGroup: {
+        maxWidth: "350px",
         display: "flex",
         justifyContent: "space-between",
         marginLeft: 12.5,

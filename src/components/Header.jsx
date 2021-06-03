@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { Message, ArrowBackIos } from "@material-ui/icons";
 
 const Styles = styled.div`
     .navdiv {
@@ -23,7 +24,6 @@ const Styles = styled.div`
         height: 80px;
         display: flex;
         align-items: center;
-        justify-content: center;
         position: fixed;
         left: 0;
         top: 0;
@@ -34,6 +34,9 @@ const Styles = styled.div`
     .logo {
         font-size: 1.5rem;
         font-weight: 800;
+        display: flex;
+        width: 100%;
+        justify-content: center;
     }
     .logo:hover {
         cursor: pointer;
@@ -55,17 +58,60 @@ const Styles = styled.div`
     a:hover {
         cursor: pointer;
     }
+
+    .message-button {
+        position: fixed;
+        right: 10px;
+        color: white;
+    }
+    .back-button {
+        position: fixed;
+        left: 10px;
+        color: white;
+    }
 `;
 
 const Header = () => {
+    const history = useHistory();
+    const location = useLocation();
+    console.log(location);
+    const back = (path) => {
+        if (path == "/chat") {
+            history.push("/messages");
+        } else {
+            history.push("/");
+        }
+    };
     return (
         <Styles>
             <div className="navdiv">
-                <span className="logo">
+                {(location.pathname == "/chat" ||
+                    location.pathname.includes("/listing")) && (
+                    <div className="back-button">
+                        <div>
+                            <ArrowBackIos
+                                onClick={() => {
+                                    back(location.pathname);
+                                }}
+                                fontSize="large"
+                            />
+                        </div>
+                    </div>
+                )}
+                <div className="logo">
                     <Link to="/">
                         <span>Student Shop</span>
                     </Link>
-                </span>
+                </div>
+                <div className="message-button">
+                    <div
+                        onClick={() => {
+                            history.push("/messages");
+                        }}
+                    >
+                        <Message fontSize="large" />
+                    </div>
+                </div>
             </div>
         </Styles>
     );

@@ -28,7 +28,7 @@ function App() {
                         <Route exact path="/listing/:postId" component={Post} />
                         <Route
                             exact
-                            path="/listing/new"
+                            path="/new-listing"
                             component={CreateListing}
                         />
                         <Route path="/messages" exact component={Messages} />
