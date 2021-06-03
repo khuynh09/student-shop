@@ -10,22 +10,24 @@ const Styles = styled.div`
     }
 
     .status-container {
+        max-width: 450px;
         display: flex;
-        justify-content: space-evenly;
-        margin-top: 20px;
+        justify-content: space-between;
+        padding-top: 20px;
     }
 
     .bar {
         height: 10px;
         width: 100px;
+        margin: 0px 5px;
         border-radius: 10px;
-        background-color: #C4C4C4;
+        background-color: #c4c4c4;
     }
 
     .status-text {
         text-align: center;
         margin-top: 5px;
-        color: #C4C4C4;
+        color: #c4c4c4;
         font-size: 18px;
     }
 
@@ -40,7 +42,7 @@ const Styles = styled.div`
     .form-container {
         margin: 30px;
         border-radius: 10px;
-        background-color: #E5E5E5;
+        background-color: #e5e5e5;
         height: 55vh;
     }
 
@@ -60,7 +62,7 @@ const Styles = styled.div`
     }
 
     .form-label {
-        color: #5F5F5F;
+        color: #5f5f5f;
         font-size: 16px;
         font-weight: 600;
         display: block;
@@ -68,7 +70,7 @@ const Styles = styled.div`
     }
 
     .title-input {
-        border: 2px solid #DADADA;
+        border: 2px solid #dadada;
         border-radius: 8px;
         height: 25px;
         width: 100%;
@@ -85,7 +87,7 @@ const Styles = styled.div`
     }
 
     .category-dropdown {
-        border: 2px solid #DADADA;
+        border: 2px solid #dadada;
         border-radius: 8px;
         height: 30px;
         width: 103%;
@@ -111,7 +113,7 @@ const Styles = styled.div`
     }
 
     .price-input {
-        border: 2px solid #DADADA;
+        border: 2px solid #dadada;
         border-radius: 8px;
         width: 94%;
         height: 25px !important;
@@ -120,7 +122,7 @@ const Styles = styled.div`
     }
 
     .description-input {
-        border: 2px solid #DADADA;
+        border: 2px solid #dadada;
         border-radius: 8px;
         height: 7vh;
         width: 100%;
@@ -157,7 +159,7 @@ const Styles = styled.div`
     }
 
     .photo-title {
-        color: #5F5F5F;
+        color: #5f5f5f;
         font-size: 16px;
         font-weight: 600;
     }
@@ -173,8 +175,8 @@ const Styles = styled.div`
     }
 `;
 
-const CreateListing = ({history, location, match}) => {
-    const [currentStatus, setCurrentStatus] = useState('details');
+const CreateListing = ({ history, location, match }) => {
+    const [currentStatus, setCurrentStatus] = useState("details");
     const [title, setTitle] = useState();
     const [category, setCategory] = useState();
     const [price, setPrice] = useState();
@@ -186,29 +188,31 @@ const CreateListing = ({history, location, match}) => {
     let bottomButton = "";
 
     const handleNext = (e) => {
-        if (currentStatus === 'details') {
-            document.getElementById('photos-bar').style.backgroundColor = '#bf98d1';
-            document.getElementById('photos-text').style.color = '#bf98d1';
-            setCurrentStatus('photos');
-        } else if (currentStatus === 'photos') {
-            document.getElementById('finish-bar').style.backgroundColor = '#bf98d1';
-            document.getElementById('finish-text').style.color = '#bf98d1';
-            setCurrentStatus('finish');
+        if (currentStatus === "details") {
+            document.getElementById("photos-bar").style.backgroundColor =
+                "#bf98d1";
+            document.getElementById("photos-text").style.color = "#bf98d1";
+            setCurrentStatus("photos");
+        } else if (currentStatus === "photos") {
+            document.getElementById("finish-bar").style.backgroundColor =
+                "#bf98d1";
+            document.getElementById("finish-text").style.color = "#bf98d1";
+            setCurrentStatus("finish");
         }
-    }
+    };
 
     const loadFile = (e) => {
-        let image = document.getElementById('output');
+        let image = document.getElementById("output");
         image.src = URL.createObjectURL(e.target.files[0]);
         setImage(image.src);
-        image.style.display = 'block';
-    }
+        image.style.display = "block";
+    };
 
     const handlePost = (e) => {
         history.push("/");
-    }
+    };
 
-    if (currentStatus === 'details') {
+    if (currentStatus === "details") {
         pageContent = (
             <div className="form-container">
                 <form className="form-group">
@@ -223,7 +227,7 @@ const CreateListing = ({history, location, match}) => {
                     </div>
                     <div className="form-item">
                         <label className="form-label">Category</label>
-                        <select 
+                        <select
                             className="category-dropdown"
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
@@ -251,7 +255,7 @@ const CreateListing = ({history, location, match}) => {
                     </div>
                     <div className="form-item">
                         <label className="form-label">Condition</label>
-                        <select 
+                        <select
                             className="category-dropdown"
                             value={condition}
                             onChange={(e) => setCondition(e.target.value)}
@@ -274,33 +278,42 @@ const CreateListing = ({history, location, match}) => {
         );
 
         bottomButton = (
-            <button className="next-button" onClick={handleNext}>Next</button>
+            <button className="next-button" onClick={handleNext}>
+                Next
+            </button>
         );
-    } else if (currentStatus === 'photos') {
+    } else if (currentStatus === "photos") {
         pageContent = (
             <div className="form-container">
                 <div className="upload-photo">
                     <h3 className="photo-title">Upload Photo</h3>
-                    <input 
+                    <input
                         className="photo-input"
-                        type="file"  
-                        accept="image/*" 
-                        name="image" 
-                        id="file"  
-                        onChange={loadFile} 
+                        type="file"
+                        accept="image/*"
+                        name="image"
+                        id="file"
+                        onChange={loadFile}
                     />
                     <label htmlFor="file" className="photo-label">
                         <Add style={{ fontSize: "2rem" }} />
                     </label>
-                    <img className="output-photo" id="output" alt="uploaded" width="250" />
+                    <img
+                        className="output-photo"
+                        id="output"
+                        alt="uploaded"
+                        width="250"
+                    />
                 </div>
             </div>
         );
 
         bottomButton = (
-            <button className="next-button" onClick={handleNext}>Next</button>
+            <button className="next-button" onClick={handleNext}>
+                Next
+            </button>
         );
-    } else if (currentStatus === 'finish') {
+    } else if (currentStatus === "finish") {
         pageContent = (
             <div className="finish-container">
                 <div className="">
@@ -327,32 +340,42 @@ const CreateListing = ({history, location, match}) => {
         );
 
         bottomButton = (
-            <button className="next-button" onClick={handlePost}>Post Item</button>
+            <button className="next-button" onClick={handlePost}>
+                Post Item
+            </button>
         );
     }
-    
+
     return (
         <Styles>
-        <div className="page-container">
-            <div className="status-container">
-                <div className="details">
-                    <div className="bar" id="details-bar"></div>
-                    <div className="status-text" id="details-text">Details</div>
+            <div className="page-container">
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <div className="status-container">
+                        <div className="details">
+                            <div className="bar" id="details-bar"></div>
+                            <div className="status-text" id="details-text">
+                                Details
+                            </div>
+                        </div>
+                        <div className="photos">
+                            <div className="bar" id="photos-bar"></div>
+                            <div className="status-text" id="photos-text">
+                                Photos
+                            </div>
+                        </div>
+                        <div className="finish">
+                            <div className="bar" id="finish-bar"></div>
+                            <div className="status-text" id="finish-text">
+                                Finish
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="photos">
-                    <div className="bar" id="photos-bar"></div>
-                    <div className="status-text" id="photos-text">Photos</div>
-                </div>
-                <div className="finish">
-                    <div className="bar" id="finish-bar"></div>
-                    <div className="status-text" id="finish-text">Finish</div>
-                </div>
+
+                {pageContent}
+
+                {bottomButton}
             </div>
-
-            {pageContent}
-
-            {bottomButton}
-        </div>
         </Styles>
     );
 };
