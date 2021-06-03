@@ -27,9 +27,11 @@ const Styles = styled.div`
         .chat-header {
             width: 100%;
             padding: 10px;
-            border-bottom: 2px solid white;
+            border-bottom: 2px solid #fafafa;
             position: sticky;
-            background: #bf98d1;
+            // background: #bf98d1;
+            display: flex;
+            align-items: center;
 
             .return {
                 font-weight: 10px;
@@ -39,22 +41,23 @@ const Styles = styled.div`
                 float: left;
             }
             img {
-                margin-left: 37%;
+                height: 50px;
+                // margin-left: 37%;
                 border-radius: 50%;
-                width: 10%;
+                width: 50px;
             }
 
-            .chat-about {
-                float: left;
-                padding-left: 10px;
-                margin-top: 6px;
-            }
+            // .chat-about {
+            //     float: left;
+            //     padding-left: 10px;
+            //     margin-top: 6px;
+            // }
 
             .chat-with {
                 font-weight: bold;
                 font-size: 16px;
                 text-align: justify;
-                padding-left: 33%;
+                padding-left: 10px;
             }
         }
 
@@ -65,7 +68,6 @@ const Styles = styled.div`
             flex-direction: column;
             padding: 10px;
             padding-bottom: 30px;
-            border-bottom: 1px solid grey;
         }
 
         .messages {
@@ -82,7 +84,8 @@ const Styles = styled.div`
         }
 
         .time {
-            padding-right: 120px;
+            text-align: center;
+            // padding-right: 120px;
             padding-bottom: 10px;
             color: grey;
         }
@@ -125,6 +128,9 @@ const Styles = styled.div`
             border-bottom-right-radius: 10px;
         }
 
+        .mine .time {
+            width: 100%;
+        }
         .mine {
             align-items: flex-end;
         }
@@ -164,20 +170,24 @@ const Styles = styled.div`
 
         .chat-message {
             position: fixed;
+            bottom: 0;
+            margin-bottom: 20px;
             padding-top: 15px;
             margin-top: 15px;
             padding-bottom: 25px;
-            width: 99%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
 
             textarea {
-                width: 90%;
+                width: 100%;
                 height: 45px;
                 border: none;
                 padding: 10px 10px;
+                margin: 10px 10px;
                 font: 14px/22px "Lato", Arial, sans-serif;
                 margin-bottom: 20px;
                 border-radius: 50px;
-                margin-left: 20px;
                 resize: none;
                 background: #eee;
             }
@@ -192,15 +202,6 @@ const Chat = () => {
             <div className="container clearfix">
                 <div className="chat">
                     <div className="chat-header clearfix">
-                        <div
-                            className="return"
-                            onClick={() => {
-                                history.push("/messages");
-                            }}
-                        >
-                            &#60;
-                        </div>
-
                         <img
                             src="melissa.png"
                             alt="avatar"
