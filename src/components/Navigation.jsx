@@ -12,13 +12,13 @@ const Styles = styled.div`
         height: 80px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         position: fixed;
         left: 0;
         bottom: 0;
         height: 60px;
         width: 100%;
-        background:white;
+        background: white;
     }
 
     .logo {
@@ -34,6 +34,8 @@ const Styles = styled.div`
         font-weight: 500;
         text-decoration: none;
         padding: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
     }
 
     .nav-item:hover {
@@ -69,33 +71,14 @@ const Navigation = () => {
                 <div
                     className="nav-item"
                     onClick={() => {
-                        history.push("/recents");
-                    }}
-                >
-                    <div>
-                        <AccessTime fontSize="large" />
-                    </div>
-                </div>
-                <div
-                    className="nav-item"
-                    onClick={() => {
-                        history.push("/listing/new");
+                        history.push("/new-listing");
                     }}
                 >
                     <Button className="add-button">
                         <Add style={{ fontSize: "2rem" }} />
                     </Button>
                 </div>
-                <div
-                    className="nav-item"
-                    onClick={() => {
-                        history.push("/messages");
-                    }}
-                >
-                    <div>
-                        <Message fontSize="large" />
-                    </div>
-                </div>
+
                 <div
                     className="nav-item"
                     onClick={() => {
