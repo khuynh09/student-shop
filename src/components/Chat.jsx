@@ -206,7 +206,7 @@ const Chat = () => {
                             src="melissa.png"
                             alt="avatar"
                             onClick={() => {
-                                history.push("/account");
+                                history.push("/account/0");
                             }}
                         />
 
