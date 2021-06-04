@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/studentshop.io/static/css/main.b8b75a74.chunk.css",
-    "main.js": "/studentshop.io/static/js/main.d5f03fe4.chunk.js",
-    "main.js.map": "/studentshop.io/static/js/main.d5f03fe4.chunk.js.map",
+    "main.js": "/studentshop.io/static/js/main.62f8e19e.chunk.js",
+    "main.js.map": "/studentshop.io/static/js/main.62f8e19e.chunk.js.map",
     "runtime-main.js": "/studentshop.io/static/js/runtime-main.1d24e4e7.js",
     "runtime-main.js.map": "/studentshop.io/static/js/runtime-main.1d24e4e7.js.map",
     "static/css/2.e6a5f38c.chunk.css": "/studentshop.io/static/css/2.e6a5f38c.chunk.css",
@@ -26,6 +26,6 @@
     "static/css/2.e6a5f38c.chunk.css",
     "static/js/2.741e932c.chunk.js",
     "static/css/main.b8b75a74.chunk.css",
-    "static/js/main.d5f03fe4.chunk.js"
+    "static/js/main.62f8e19e.chunk.js"
   ]
 }
