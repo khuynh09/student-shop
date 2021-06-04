@@ -8,6 +8,8 @@ import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import { useHistory, useParams } from "react-router-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+const localStorage = require("local-storage");
+
 const Styles = styled.div`
 .profile {
     overflow: scroll;
@@ -187,7 +189,12 @@ const Account = () => {
         setDislikes(accounts[acctId].dislike);
 
         if (acctId == 6){
-            setCheckProperty(false);
+            let isPosted = localStorage.get("posted");
+            if (isPosted) {
+                setCheckProperty(true);
+            } else {
+                setCheckProperty(false);
+            }
         }
     }, [])
 
@@ -298,11 +305,11 @@ const Account = () => {
                     <div className="listings">
                     <h2 className="listings-header">Listings</h2>
                     <hr></hr>
-                    <img className="listing-image" src={accounts[acctId]?.listing_image} onClick={() => { history.push(`/listing/${accounts[acctId]?.listing_id}`); }} alt="User's listing"/>
-                    <div className="sold">
+                    <img className="listing-image" src={localStorage.get("post_image")} alt="User's listing"/>
+                    {/* <div className="sold">
                         <img className="sold-listing" src={soldListing} alt="Sold listing"/>
                         <h1 className="sold-header">SOLD OUT</h1>
-                    </div>
+                    </div> */}
                 </div>
                     
                 ) :(
