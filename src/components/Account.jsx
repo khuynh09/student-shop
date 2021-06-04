@@ -274,6 +274,7 @@ const Account = () => {
             dislike:50,
             image: "https://pbs.twimg.com/profile_images/1263243779714109441/BEnWwDMY.jpg",
             bio: "Yo what up its Peter! Check out my page ",
+            listing_image: localStorage.get("post_image"),
         }
         
     ]
@@ -305,7 +306,7 @@ const Account = () => {
                     <div className="listings">
                     <h2 className="listings-header">Listings</h2>
                     <hr></hr>
-                    <img className="listing-image" src={localStorage.get("post_image")} alt="User's listing"/>
+                    <img className="listing-image" src={accounts[acctId].listing_image} alt="User's listing"/>
                     {/* <div className="sold">
                         <img className="sold-listing" src={soldListing} alt="Sold listing"/>
                         <h1 className="sold-header">SOLD OUT</h1>
